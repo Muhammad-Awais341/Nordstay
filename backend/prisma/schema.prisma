@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  // If you later use Supabase pooler (6543) for app and direct (5432) for migrations,
+  // uncomment the next line AND add DIRECT_URL to .env
+  // directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  user
+  host
+  admin
+}
+
+enum BookingStatus {
+  confirmed
+  canceled
+}
+
+model User {
+  id           String    @id @default(cuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(user)
+  listings     Listing[]
+  bookings     Booking[]
+  createdAt    DateTime  @default(now())
+}
+
+model Listing {
+  id            String    @id @default(cuid())
+  title         String
+  description   String
+  city          String
+  address       String
+  pricePerNight Int
+  maxGuests     Int
+  images        String[]
+  host          User      @relation(fields: [hostId], references: [id])
+  hostId        String
+  bookings      Booking[]
+  createdAt     DateTime  @default(now())
+}
+
+model Booking {
+  id         String        @id @default(cuid())
+  user       User          @relation(fields: [userId], references: [id])
+  userId     String
+  listing    Listing       @relation(fields: [listingId], references: [id])
+  listingId  String
+  startDate  DateTime
+  endDate    DateTime
+  totalPrice Int
+  status     BookingStatus @default(confirmed)
+  createdAt  DateTime      @default(now())
+}
