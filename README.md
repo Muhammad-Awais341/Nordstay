@@ -1,6 +1,6 @@
 # Airbnb Mini (Fullstack Starter)
 
-A minimal Airbnb-like app following your Figma prototype, built with **React + TypeScript + Tailwind** (frontend) and **Node + Express + TypeScript + Prisma (PostgreSQL)** (backend).
+A minimal Airbnb-like app built with **React + TypeScript + Tailwind** (frontend) and **Node + Express + TypeScript + Prisma (PostgreSQL)** (backend).
 
 ## Quick Start
 
