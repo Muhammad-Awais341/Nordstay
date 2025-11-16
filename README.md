@@ -1,35 +1,52 @@
-# Airbnb Mini (Fullstack Starter)
+NordStay
 
-A minimal Airbnb-like app following your Figma prototype, built with **React + TypeScript + Tailwind** (frontend) and **Node + Express + TypeScript + Prisma (PostgreSQL)** (backend).
+NordStay is a simple Airbnb-style app where users can view listings, see details, log in, and make bookings.
 
-## Quick Start
+🚀 Tech Stack
 
-### 1) Database (PostgreSQL)
-Use Docker:
-```bash
-docker run --name airbnb-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=airbnb -p 5432:5432 -d postgres:16
-```
+Frontend: React + Vite + TypeScript, Tailwind CSS, React Router, React Query
 
-### 2) Backend
-```bash
+Backend: Node.js + Express + TypeScript (API on http://localhost:4001)
+
+Database & Auth: Supabase (PostgreSQL + Email/Password Auth)
+
+🔧 Setup Instructions
+1. Start Backend
 cd backend
-cp .env.example .env   # set DATABASE_URL and JWT_SECRET if needed
-npm i
-npx prisma migrate dev --name init
+npm install
 npm run dev
-```
-API at `http://localhost:4000/api`
 
-### 3) Frontend
-```bash
-cd ../frontend
-npm i
+2. Supabase Environment
+
+In frontend/.env:
+
+VITE_SUPABASE_URL=your-url
+VITE_SUPABASE_ANON_KEY=your-anon-key
+
+3. Start Frontend
+cd frontend
+npm install
 npm run dev
-```
-App at `http://localhost:5173`
 
-## Notes
-- Login/Register available under `/login` & `/register`
-- Listings at `/` (Home). Clicking a card opens details and allows booking (requires login).
-- My bookings at `/bookings`.
-- Tailwind theme colors currently set to defaults. Replace with your Figma values in `tailwind.config.js`.
+
+Frontend runs at:
+
+http://localhost:5173
+
+📌 Features
+
+User Login / Signup (Supabase Auth)
+
+View Listings
+
+Listing Details Page
+
+Booking System
+
+User Bookings Page
+
+📁 Folder Structure
+NordStay/
+ ├── backend/    # Express API
+ ├── frontend/   # React App
+ └── README.md
