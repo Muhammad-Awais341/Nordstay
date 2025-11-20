@@ -1,35 +1,104 @@
-# Airbnb Mini (Fullstack Starter)
+# 🌐 Nordstay – Fullstack Bokningsplattform
 
-A minimal Airbnb-like app built with **React + TypeScript + Tailwind** (frontend) and **Node + Express + TypeScript + Prisma (PostgreSQL)** (backend).
+Nordstay är en Airbnb-inspirerad bokningsapplikation. Projektet består av en fullstack-lösning med  
+React + TypeScript i frontend och Node.js + Express + Prisma + Supabase i backend.
 
-## Quick Start
+---
 
-### 1) Database (PostgreSQL)
-Use Docker:
-```bash
-docker run --name airbnb-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=airbnb -p 5432:5432 -d postgres:16
-```
+## ✨ Funktioner
 
-### 2) Backend
-```bash
+- Responsiv startsida med hero-sektion
+- Sökfält för destinationer
+- Visning av boenden i kortformat med bilder, pris och stad
+- Detaljsida för boende med bilder, info och bokningsformulär
+- Registrering & inloggning (JWT)
+- Boka boende
+- Se alla bokningar under “Mina bokningar”
+- Simulerad betalningsvy
+
+---
+
+## 🛠 Teknikstack
+
+### **Frontend**
+- React (Vite)
+- TypeScript
+- Tailwind CSS
+- Axios
+- React Router
+
+### **Backend**
+- Node.js + Express
+- TypeScript
+- Prisma ORM
+- Supabase PostgreSQL
+- JSON Web Tokens
+- CORS & Cookie Parser
+
+---
+
+## 🗄 Databasmodell
+
+### **User**
+- id  
+- name  
+- email  
+- passwordHash  
+
+### **Listing**
+- id  
+- title  
+- description  
+- city  
+- address  
+- images (String[])  
+- pricePerNight  
+- maxGuests  
+- hostId  
+
+### **Booking**
+- id  
+- userId  
+- listingId  
+- startDate  
+- endDate  
+- totalPrice  
+
+---
+🚀 Starta frontend
+cd frontend
+npm install
+npm run dev
+
+
+Frontend körs på:
+👉 http://localhost:5173/
+
+🚀 Starta backend
 cd backend
-cp .env.example .env   # set DATABASE_URL and JWT_SECRET if needed
-npm i
-npx prisma migrate dev --name init
+npm install
+npx prisma db push
+npx ts-node src/seed.ts
 npm run dev
-```
-API at `http://localhost:4000/api`
 
-### 3) Frontend
-```bash
-cd ../frontend
-npm i
-npm run dev
-```
-App at `http://localhost:5173`
 
-## Notes
-- Login/Register available under `/login` & `/register`
-- Listings at `/` (Home). Clicking a card opens details and allows booking (requires login).
-- My bookings at `/bookings`.
-- Tailwind theme colors currently set to defaults. Replace with your Figma values in `tailwind.config.js`.
+Backend körs på:
+👉 http://localhost:4001/
+
+📦 Seed-data
+
+Seed-scriptet skapar:
+
+Demo-användare:
+
+Email: demo@user.com
+
+Lösenord: test1234
+
+Host-användare:
+
+Email: host@example.com
+
+Lösenord: test1234
+
++ 8 boenden i Sverige, Danmark, Frankrike och England.
